@@ -1,8 +1,8 @@
 import Head from 'next/head'
 import Link from 'next/link'
 
-import { Layout, siteTitle } from '../components/Layout'
-
+import { Layout } from '../components/Layout'
+import { siteTitle } from '../constants'
 import utilStyles from '../styles/utils.module.css'
 
 export default function Home() {

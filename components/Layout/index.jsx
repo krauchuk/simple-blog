@@ -3,7 +3,6 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 import { name, siteTitle } from '../../constants'
-
 import styles from './styles.module.css'
 import utilStyles from '../../styles/utils.module.css'
 
