@@ -1,11 +1,19 @@
 import Head from 'next/head'
-import Link from 'next/link'
 
 import { Layout } from '../components/Layout'
 import { siteTitle } from '../constants'
 import utilStyles from '../styles/utils.module.css'
+import { getSortedPostsData } from '../utils/postsParser'
 
-export default function Home() {
+export async function getStaticProps() {
+  const allPostsData = getSortedPostsData()
+
+  return {
+    props: { allPostsData },
+  }
+}
+
+export default function Home({ allPostsData }) {
   return (
     <Layout isHomePage>
       <Head>
@@ -14,8 +22,19 @@ export default function Home() {
       <section className={utilStyles.headingMd}>
         <p>Hello, this is my simple blog in which I publish stories from my life</p>
       </section>
-      <section>
-        <Link href="/posts/first-post">My first post</Link>
+      <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
+        <h2 className={utilStyles.headingLg}>Blog</h2>
+        <ul className={utilStyles.list}>
+          {allPostsData.map(({ id, date, title }) => (
+            <li className={utilStyles.listItem} key={id}>
+              {title}
+              <br />
+              {id}
+              <br />
+              {date}
+            </li>
+          ))}
+        </ul>
       </section>
     </Layout>
   )
