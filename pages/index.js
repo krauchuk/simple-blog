@@ -1,17 +1,22 @@
 import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import Link from 'next/link'
+
+import { Layout, siteTitle } from '../components/Layout'
+
+import utilStyles from '../styles/utils.module.css'
 
 export default function Home() {
   return (
-    <div>
+    <Layout isHomePage>
       <Head>
-        <title>Simple Blog</title>
-        <link rel="icon" href="/favicon.ico" />
+        <title>{siteTitle}</title>
       </Head>
-
-      <main>
-        <h1 className={styles.title}>Simple blog</h1>
-      </main>
-    </div>
+      <section className={utilStyles.headingMd}>
+        <p>Hello, this is my simple blog in which I publish stories from my life</p>
+      </section>
+      <section>
+        <Link href="/posts/first-post">My first post</Link>
+      </section>
+    </Layout>
   )
 }
